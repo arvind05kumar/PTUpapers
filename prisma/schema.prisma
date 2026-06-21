@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Paper {
+  id            String     @id @default(uuid())
+  branch        String     // e.g. "B.Tech CSE", "B.Tech ECE", "BCA", "MBA"
+  semester      String     // e.g. "Semester 1", "Semester 3"
+  subjectName   String     // e.g. "Data Structures"
+  subjectCode   String     // e.g. "BTCS-301"
+  year          Int        // e.g. 2023
+  examType      String     // e.g. "End-term", "Mid-term", "Supplementary"
+  pdfUrl        String     // Path or URL to PDF, e.g., "/uploads/123.pdf"
+  viewCount     Int        @default(0)
+  downloadCount Int        @default(0)
+  feedbacks     Feedback[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Feedback {
+  id        String   @id @default(uuid())
+  paperId   String
+  paper     Paper    @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  issueType String   // e.g. "Wrong Paper", "Blurry PDF", "Incorrect Metadata", "Other"
+  message   String
+  status    String   @default("pending") // e.g. "pending", "resolved"
+  createdAt DateTime @default(now())
+}
