@@ -17,6 +17,7 @@ export default function Home() {
   // Debounced search for live search dropdown
   useEffect(() => {
     if (query.trim().length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSearchResults([]);
       return;
     }
@@ -118,7 +119,7 @@ export default function Home() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z"
+                      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637z"
                     />
                   </svg>
                 </div>
@@ -184,7 +185,7 @@ export default function Home() {
                   </div>
                 ) : (
                   <div className="p-6 text-slate-500 text-center">
-                    No papers found matching <span className="font-semibold text-slate-800">"{query}"</span>.
+                    No papers found matching <span className="font-semibold text-slate-800">&quot;{query}&quot;</span>.
                     <div className="text-xs mt-1 text-slate-400">Try browsing by Branch or searching another term.</div>
                   </div>
                 )}

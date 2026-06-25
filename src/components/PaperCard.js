@@ -8,6 +8,7 @@ export default function PaperCard({ paper, onBookmarkChange }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const bookmarks = JSON.parse(localStorage.getItem('ptu_bookmarks') || '[]');
     setIsBookmarked(bookmarks.includes(paper.id));
@@ -76,15 +77,15 @@ export default function PaperCard({ paper, onBookmarkChange }) {
         <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
           <span className="inline-flex items-center gap-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-slate-400">
-              <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-              <path fillRule="evenodd" d="M.664 9.576a1.5 1.5 0 000 2.848C1.503 12.752 4.966 17 10 17c5.034 0 8.497-4.248 9.336-4.576a1.5 1.5 0 000-2.848C18.497 9.248 15.034 5 10 5 4.966 5 1.503 9.252.664 9.576zM15 10a5 5 0 11-10 0 5 5 0 0110 0z" clipRule="evenodd" />
+              <path d="M10 12.5 a 2.5 2.5 0 1 0 0-5 a 2.5 2.5 0 0 0 0 5z" />
+              <path fillRule="evenodd" d="M.664 9.576 a 1.5 1.5 0 0 0 0 2.848 C 1.503 12.752 4.966 17 10 17 c 5.034 0 8.497-4.248 9.336-4.576 a 1.5 1.5 0 0 0 0-2.848 C 18.497 9.248 15.034 5 10 5 c-4.966 0-8.497 4.252-9.336 4.576 z M 15 10 a 5 5 0 1 1-10 0 a 5 5 0 0 1 10 0z" clipRule="evenodd" />
             </svg>
             {paper.viewCount} views
           </span>
           <span className="inline-flex items-center gap-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-slate-400">
-              <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.232a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.132V2.75z" />
-              <path d="M3.5 12.75a.75.75 0 00-1.5 0v3.75A1.75 1.75 0 003.75 18.25h12.5A1.75 1.75 0 0018 16.5v-3.75a.75.75 0 00-1.5 0v3.75a.25 0 01-.25 0.25H3.75a.25 0 01-.25-.25v-3.75z" />
+              <path d="M10.75 2.75 a .75 .75 0 0 0-1.5 0 v 8.614 L 6.295 8.232 a .75 .75 0 1 0-1.09 1.03 l 4.25 4.5 a .75 .75 0 0 0 1.09 0 l 4.25-4.5 a .75 .75 0 0 0-1.09-1.03 l-2.955 3.132 V 2.75z" />
+              <path d="M3.5 12.75 a .75 .75 0 0 0-1.5 0 v 3.75 A 1.75 1.75 0 0 0 3.75 18.25 h 12.5 A 1.75 1.75 0 0 0 18 16.5 v-3.75 a .75 .75 0 0 0-1.5 0 v 3.75 a .25 .25 0 0 1-.25 .25 H 3.75 a .25 .25 0 0 1-.25-.25 v-3.75z" />
             </svg>
             {paper.downloadCount} downloads
           </span>

@@ -41,6 +41,7 @@ function BrowseContent() {
 
   // Update selected filters when URL searchParams change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedBranch(searchParams.get('branch') || '');
     setSelectedSemester(searchParams.get('semester') || '');
     setSelectedSubjectCode(searchParams.get('subjectCode') || '');
@@ -79,6 +80,7 @@ function BrowseContent() {
       );
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPapers(filtered);
   }, [
     allPapers,
@@ -333,7 +335,7 @@ function BrowseContent() {
                 <span className="text-xs font-medium text-slate-500">Active filters:</span>
                 {searchQuery && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-700">
-                    Search: "{searchQuery}"
+                    Search: &quot;{searchQuery}&quot;
                     <button onClick={() => updateURLParams({ search: null })} className="text-slate-400 hover:text-slate-600 font-bold">&times;</button>
                   </span>
                 )}
@@ -402,7 +404,7 @@ function BrowseContent() {
             <span className="text-4xl mb-4 block">🔍</span>
             <h3 className="text-lg font-bold text-slate-900 mb-2">No question papers found</h3>
             <p className="text-sm text-slate-500 mb-6">
-              We couldn't find any papers matching your current filters. Try loosening your filters or resetting the search query.
+              We couldn&apos;t find any papers matching your current filters. Try loosening your filters or resetting the search query.
             </p>
             <div className="flex justify-center gap-4">
               <button

@@ -50,14 +50,6 @@ export default function AdminPage() {
     checkAuth();
   }, []);
 
-  // Load lists if authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      loadPapers();
-      loadFeedbacks();
-    }
-  }, [isAuthenticated]);
-
   const loadPapers = async () => {
     setLoadingList(true);
     try {
@@ -82,6 +74,15 @@ export default function AdminPage() {
       console.error(e);
     }
   };
+
+  // Load lists if authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      loadPapers();
+      loadFeedbacks();
+    }
+  }, [isAuthenticated]);
 
   const handleLogin = async (e) => {
     e.preventDefault();

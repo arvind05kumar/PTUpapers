@@ -16,6 +16,7 @@ export default function PaperDetailsClient({ paper, relatedPapers }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const bookmarks = JSON.parse(localStorage.getItem('ptu_bookmarks') || '[]');
     setIsBookmarked(bookmarks.includes(paper.id));
@@ -159,7 +160,7 @@ export default function PaperDetailsClient({ paper, relatedPapers }) {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                    d="M3 16.5 v 2.25 A 2.25 2.25 0 0 0 5.25 21 h 13.5 A 2.25 2.25 0 0 0 21 18.75 V 16.5 M 16.5 12 L 12 16.5 m 0 0 L 7.5 12 m 4.5 4.5 V 3"
                   />
                 </svg>
                 <span>Download PDF Question Paper</span>
@@ -207,7 +208,7 @@ export default function PaperDetailsClient({ paper, relatedPapers }) {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
+                      d="M 13.19 8.688 a 4.5 4.5 0 0 1 1.242 7.244 l-4.5 4.5 a 4.5 4.5 0 0 1-6.364-6.364 l 1.757-1.757 m 13.35-.622 l 1.757-1.757 a 4.5 4.5 0 0 0-6.364-6.364 l-4.5 4.5 a 4.5 4.5 0 0 0 1.242 7.244"
                     />
                   </svg>
                   <span>{copied ? 'Copied!' : 'Copy Link'}</span>

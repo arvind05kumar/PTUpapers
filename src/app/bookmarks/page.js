@@ -21,6 +21,7 @@ export default function BookmarksPage() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     async function loadData() {
       try {
@@ -36,6 +37,7 @@ export default function BookmarksPage() {
       }
     }
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleBookmarkChange = () => {
@@ -84,7 +86,7 @@ export default function BookmarksPage() {
             <span className="text-4xl mb-4 block">⭐</span>
             <h3 className="text-lg font-bold text-slate-900 mb-2">No bookmarked papers</h3>
             <p className="text-sm text-slate-500 mb-6">
-              You haven't bookmarked any question papers yet. Save papers you need so you can find them instantly.
+              You haven&apos;t bookmarked any question papers yet. Save papers you need so you can find them instantly.
             </p>
             <div className="flex justify-center">
               <Link
